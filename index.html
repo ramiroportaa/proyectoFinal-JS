@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome (para iconos redes)-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>HEY BRO Indumentaria Masculina | HOME</title>
+</head>
+<body>
+    <header>
+        <!-- Menu de navegacion -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0 bg-white">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="img/logo.png" alt="HEY BRO" width="90rem"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#!">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="tienda.html">E-SHOP</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="nosotros.html">NOSOTROS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contacto.html">CONTACTO</a>
+                  </li>
+                </ul>
+                <ul class="navbar-nav d-flex flex-row">
+                  <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#!">
+                      <i class="fas fa-shopping-cart"> Carrito</i>
+                    </a>
+                  </li>
+                  <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#!">
+                      <i class="fab fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#!">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+        <!--Section: Portada-->
+        <section>
+            <div id="portada" class="bg-image vh-100" style="
+                background-image: url(img/portada.jpg);">
+              <div class="container py-5">
+                <div class="row px-4 px-lg-5">
+                  <div class="col-lg-6">
+                    <h2 class="portada-text">
+                      10%OFF ABONANDO EN EFECTIVO O TRANSFERENCIA.
+                    </h2>
+                    <a class="btn btn-dark portada-boton" href="shop.html">IR A LA TIENDA</a>
+                </div>
+              </div>
+            </div>
+        </section>
+        <!-- FIN Section: Portada-->
+    </header>
+
+    <main>
+    <!--  Modal de ejemplo (copiar para el resto de productos)-->
+      <div class="modal fade" id="productView" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="row align-items-stretch">
+                <div class="col-lg-6 p-lg-0"><a class="product-view d-block h-100 bg-cover bg-center" style="background: url(img/product-2.jpg)" href="img/product-2.jpg" data-lightbox="productview" title="Zapatillas Nike SB Dunk by Dior"></a><a class="d-none" href="img/product-2-alt-1.jpg" title="Red digital smartwatch" data-lightbox="productview"></a><a class="d-none" href="img/product-5-alt-2.jpg" title="Red digital smartwatch" data-lightbox="productview"></a></div>
+                <div class="col-lg-6">
+                  <button class="close p-4" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+                  <div class="p-5 my-md-4">
+                    <ul class="list-inline mb-2">
+                      <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                    </ul>
+                    <h2 class="h4">Zapatillas Nike SB Dunk by Dior</h2>
+                    <p class="text-muted">$4500</p>
+                    <p class="text-small mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.</p>
+                    <div class="row align-items-stretch mb-4">
+                      <div class="col-sm-7 pr-sm-0">
+                        <div class="border d-flex align-items-center justify-content-between py-1 px-3"><span class="small text-uppercase text-gray mr-4 no-select">Cantidad</span>
+                          <div class="quantity">
+                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                            <input class="form-control border-0 shadow-0 p-0" type="text" value="1">
+                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-5 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Agregar al carrito</a></div>
+                    </div><a class="btn btn-link text-dark p-0" href="#"><i class="far fa-heart mr-2"></i>Añadir a favoritos</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- CATEGORIES SECTION-->
+        <section class="pt-5 container">
+          <header class="text-center">
+            <p class="small text-muted small text-uppercase mb-1">Vesti #HeyBro</p>
+            <h2 class="h5 text-uppercase mb-4">NUESTRAS PRINCIPALES CATEGORIAS</h2>
+          </header>
+          <div class="row">
+            <div class="col-md-4 mb-4 mb-md-0">
+              <a class="category-item" href="tienda.html">
+                <img class="img-fluid" src="img/cat-img-1.jpg" alt=""><strong class="category-item-title">Remeras</strong>
+              </a>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <a class="category-item mb-4" href="tienda.html"><img class="img-fluid" src="img/cat-img-2.jpg" alt=""><strong class="category-item-title">Zapatillas</strong></a>
+              <a class="category-item" href="tienda.html"><img class="img-fluid" src="img/cat-img-3.jpg" alt=""><strong class="category-item-title">Camisas</strong></a>
+            </div>
+            <div class="col-md-4">
+              <a class="category-item" href="tienda.html"><img class="img-fluid" src="img/cat-img-4.jpg" alt=""><strong class="category-item-title">Pantalones</strong></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRENDING PRODUCTS-->
+        <section class="py-5 container">
+          <header class="text-center">
+            <p class="small text-muted small text-uppercase mb-1">Tenemos lo que buscas</p>
+            <h2 class="h5 text-uppercase mb-4">Productos mas vendidos</h2>
+          </header>
+          <div class="row">
+            <!-- PRODUCT-->
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="product text-center">
+                <div class="position-relative mb-3">
+                  <div class="badge text-white badge-primary">Sale</div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-2.jpg" alt="..."></a>
+                  <div class="product-overlay">
+                    <ul class="mb-0 list-inline">
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-heart"></i></a></li>
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Agregar al carrito</a></li>
+                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h6> <a class="reset-anchor" href="detail.html">Zapatillas Nike SB Dunk by Dior</a></h6>
+                <p class="small text-muted">$4500</p>
+              </div>
+            </div>
+            <!-- PRODUCT-->
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="product text-center">
+                <div class="position-relative mb-3">
+                  <div class="badge text-white badge-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-3.jpg" alt="..."></a>
+                  <div class="product-overlay">
+                    <ul class="mb-0 list-inline">
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-heart"></i></a></li>
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Agregar al carrito</a></li>
+                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h6> <a class="reset-anchor" href="detail.html">Remera Levis azul</a></h6>
+                <p class="small text-muted">$1500</p>
+              </div>
+            </div>
+            <!-- PRODUCT-->
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="product text-center">
+                <div class="position-relative mb-3">
+                  <div class="badge text-white badge-info">New</div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-4.jpg" alt="..."></a>
+                  <div class="product-overlay">
+                    <ul class="mb-0 list-inline">
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-heart"></i></a></li>
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Agregar al carrito</a></li>
+                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h6> <a class="reset-anchor" href="detail.html">Camisa de fibrana MC</a></h6>
+                <p class="small text-muted">$2500</p>
+              </div>
+            </div>
+            <!-- PRODUCT-->
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="product text-center">
+                <div class="position-relative mb-3">
+                  <div class="badge text-white badge-danger">Sold</div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-5.jpg" alt="..."></a>
+                  <div class="product-overlay">
+                    <ul class="mb-0 list-inline">
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-heart"></i></a></li>
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Agregar al carrito</a></li>
+                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h6> <a class="reset-anchor" href="detail.html">Remera VANS estampada</a></h6>
+                <p class="small text-muted">$1800</p>
+              </div>
+            </div>
+            <!-- PRODUCT-->
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="product text-center">
+                <div class="position-relative mb-3">
+                  <div class="badge text-white badge-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-6.jpg" alt="..."></a>
+                  <div class="product-overlay">
+                    <ul class="mb-0 list-inline">
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-heart"></i></a></li>
+                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Agregar al carrito</a></li>
+                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h6> <a class="reset-anchor" href="detail.html">Zapatillas Nike SB Dunk gris</a></h6>
+                <p class="small text-muted">$4500</p>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
+    
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/heybro.outfits" role="button" target="_blank">
+            <i class="fab fa-facebook-f"></i
+          ></a>
+    
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://drive.google.com/drive/u/1/folders/12fQsg8DMHAZlBue3KniIwQnh9Pd1fwI1" role="button" target="_blank">
+            <i class="fab fa-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/heybro.ok/" role="button" target="_blank">
+            <i class="fab fa-instagram"></i
+          ></a>
+    
+          <!-- Linkedin -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://api.whatsapp.com/send?phone=5492644865131&text=Hola!%20Tengo%20una%20consulta." role="button" target="_blank">
+            <i class="fab fa-whatsapp"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+    
+        <!-- Section: Form -->
+        <section class="">
+          <form action="">
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center">
+              <!--Grid column-->
+              <div class="col-auto">
+                <p class="pt-2">
+                  <strong>Suscribite a nuestro newsletter</strong>
+                </p>
+              </div>
+              <!--Grid column-->
+    
+              <!--Grid column-->
+              <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-4">
+                  <input type="email" id="form5Example2" class="form-control" />
+                  <label class="form-label" for="form5Example2">Tu email</label>
+                </div>
+              </div>
+              <!--Grid column-->
+    
+              <!--Grid column-->
+              <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-outline-light mb-4">
+                  Suscribirme
+                </button>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </form>
+        </section>
+        <!-- Section: Form -->
+    
+        <!-- Section: Text -->
+        <section class="mb-4">
+          <p>
+            Somos HEY BRO! Indumentaria Masculina. Somos tu mejor opción.
+          </p>
+        </section>
+        <!-- Section: Text -->
+    
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Links</h5>
+    
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#" class="text-white">HOME</a>
+                </li>
+                <li>
+                  <a href="tienda.html" class="text-white">E-SHOP</a>
+                </li>
+                <li>
+                  <a href="nosotros.html" class="text-white">NOSOTROS</a>
+                </li>
+                <li>
+                  <a href="contacto.html" class="text-white">CONTACTO</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">+ Links</h5>
+    
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="https://drive.google.com/drive/u/1/folders/12fQsg8DMHAZlBue3KniIwQnh9Pd1fwI1" class="text-white" target="_blank">CATALOGO</a>
+                </li>
+                <li>
+                  <a href="https://api.whatsapp.com/send?phone=5492644865131&text=Hola!%20Tengo%20una%20consulta." class="text-white" target="_blank">WHATSAPP</a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/heybro.ok/" class="text-white" target="_blank">INSTAGRAM</a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/heybro.outfits" class="text-white" target="_blank">FACEBOOK</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3400.889891852303!2d-68.58001668447072!3d-31.527183981367404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9681410672252731%3A0x76bd74a1f3918381!2sHey%20Bro*21%20Outfits!5e0!3m2!1ses!2sar!4v1632608056506!5m2!1ses!2sar" width="320rem" height="240rem" style="border:0; margin-top: 1rem" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+      </div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="#">Todos los derechos reservados</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+    <!-- BOOTSTRAP JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <!-- JavaScrpit -->
+    <script src="js/app.js"></script>
+</body>
+</html>
