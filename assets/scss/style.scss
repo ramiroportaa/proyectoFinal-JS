@@ -3,6 +3,23 @@
 @import "contacto";
 @import "tienda";
 
+//RESPONSIVE MEDIA Q.
+:root {
+	font-size: 16px;
+}
+
+@media (max-width: 576px) {
+	:root {
+		font-size: 12px;
+}
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+	:root {
+		font-size: 14px;
+	}
+}
+
 //GENERAL
 .text-small {
     font-size: 0.85rem !important;

@@ -5,6 +5,7 @@
   font-weight: bolder;
   color: black;
   width: 35rem;
+  max-width: calc(100vw - 40px);
 }
 .portada-boton {
   margin-top: 1rem;
@@ -80,6 +81,20 @@
   color: #aaa;
 }
 
+:root {
+  font-size: 16px;
+}
+
+@media (max-width: 576px) {
+  :root {
+    font-size: 12px;
+  }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+}
 .text-small {
   font-size: 0.85rem !important;
 }
