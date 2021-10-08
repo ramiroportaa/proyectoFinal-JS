@@ -157,3 +157,26 @@ h6 {
     }
 }
 //FIN Productos
+
+//MODAL Productos
+.product-view {
+	min-height: 20rem;
+}  
+.quantity {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	font-family: inherit;
+	input {
+		width: 2rem;
+		text-align: center;
+	}
+	button {
+		background: none;
+		border: none;
+		width: 1rem;
+		outline: none;
+	}
+}
+//FIN MODAL Productos
