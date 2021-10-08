@@ -50,9 +50,10 @@ class Orden {
                 this.productosOrden[this.productosOrden.length-1].cantidadCarrito += cantidad;
             }
             producto.disminuirStock(cantidad);
+            this.contadorProductosAgregados += parseInt(cantidad);
         }
         else{
-        alert(`NO hay suficiente stock disponible. Quedan ${producto.stock} unidades`);
+        console.log(`NO hay suficiente stock disponible. Quedan ${producto.stock} unidades`);
         }
     }
     calcularTotal(){
@@ -92,11 +93,12 @@ productos.push(new Producto("Camisa de fibrana MC", "Camisas", 2500));
 const ordenes = []
 
 //RECUPERO LOS DATOS DEL LOCAL STORAGE AL CAMBIAR DE PAGINA O REFRESCAR PARA LUEGO ASIGNARLOS COMO OBJETO EN UNA NUEVA INSTANCIA DE LA CLASE ORDEN (Y NO PERDER ACCESO A SUS METODOS).
+//Lo que hago aca es pushear una nueva orden y cambiarle el id por el que tenia antes de cambiar de pagina.
 ordenes.push(new Orden())
 if(JSON.parse(localStorage.getItem("id-OrdenJSON")) != null){
     ordenes[ordenes.length-1].idOrden = JSON.parse(localStorage.getItem("id-OrdenJSON"));
-    ordenes[ordenes.length-1].contadorProductosAgregados = JSON.parse(localStorage.getItem("contador-OrdenJSON"));
 }
+//Aqui, si hay algo en el localStorage, agrego los productos del array almacenado en el Storage a la nueva orden recien creada.
 if(JSON.parse(localStorage.getItem("id-OrdenJSON")) != null){
     for (let producto of JSON.parse(localStorage.getItem("productos-OrdenJSON"))){
         let articuloSeleccionado = producto.idProducto-1;
@@ -119,10 +121,12 @@ function comprar (idProducto, cantidad=1) {
     (!ordenes.length) ? ordenes.push(new Orden()) : console.log(`Se continuara agregando productos a la orden n° ${ordenes.length}`) ;
     let articuloSeleccionado = idProducto-1;
     let cantidadSeleccionada = cantidad;
+    if (productos[articuloSeleccionado].stock >= cantidadSeleccionada){alert(`Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito`)}
+    else {alert(`NO hay suficiente stock disponible. Quedan ${productos[articuloSeleccionado].stock} unidades`)};
     ordenes[ordenes.length-1].agregarProducto(productos[articuloSeleccionado], cantidadSeleccionada);
-    ordenes[ordenes.length-1].contadorProductosAgregados += cantidadSeleccionada;
-    alert(`Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito`);
     actualizarLocalStorage();
+    //Actualizamos DOM del carrito cada vez que agregamos un producto a la orden.
+    navCarrito.innerHTML = `Carrito (${ordenes[ordenes.length-1].contadorProductosAgregados})`
 }
 
 //Creamos funcion para finalizar la orden luego del pago (el carrito se vacia al pushear nueva orden, esto se almacena en localstorage y luego se refresca la pagina).
@@ -136,7 +140,7 @@ function finalizarOrden (){
 //Ademas contiene las instrucciones de ejecutar la funcion de compra cada vez que clickeamos en el boton de agregar al carrito.
 function escribirProductosHTML (arrayProductos, columnas=3) {
     const productosHTML = document.getElementById("productos");
-arrayProductos.forEach((producto) => {
+    arrayProductos.forEach((producto) => {
     let contenedor = document.createElement("div");
     contenedor.className = `col-xl-${columnas} col-lg-4 col-sm-6`
     //Definimos el innerHTML del elemento con una plantilla de texto
@@ -223,8 +227,12 @@ function escribirModalesHTML (arrayProductos){
 })
 }
 
-//Mostramos la orden por alert cada vez que hacemos click en el carrito...
 const navCarrito = document.getElementById("nav-carrito");
+
+//Escribo por DOM la cantidad de productos en el carrito.
+navCarrito.innerHTML = `Carrito (${ordenes[ordenes.length-1].contadorProductosAgregados})`
+
+//Mostramos la orden por alert cada vez que hacemos click en el carrito...
 navCarrito.addEventListener("click", () => {
     (!ordenes[ordenes.length-1].productosOrden.length) ? alert("El carrito esta vacio") : ordenes[ordenes.length-1].mostrarOrden();
 })
