@@ -314,4 +314,47 @@ h6 {
   outline: none;
 }
 
+.dialogoInfo {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+  top: 80px;
+  right: 5px;
+  width: 20rem;
+  height: auto;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 5px;
+  font-size: smaller;
+  text-align: center;
+  visibility: hidden;
+  transition: 1s;
+  background-color: #b68b23;
+}
+.dialogoInfo-active {
+  visibility: visible;
+}
+
+.barraCarrito {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  right: 0;
+  width: 20rem;
+  height: 100vh;
+  border-top-left-radius: 5px;
+  margin: 2px;
+  padding: 5px;
+  font-size: smaller;
+  text-align: center;
+  visibility: hidden;
+  background-color: #dcb14a;
+}
+.barraCarrito-active {
+  visibility: visible;
+}
+
 /*# sourceMappingURL=style.css.map */

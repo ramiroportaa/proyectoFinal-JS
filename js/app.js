@@ -121,8 +121,14 @@ function comprar (idProducto, cantidad=1) {
     (!ordenes.length) ? ordenes.push(new Orden()) : console.log(`Se continuara agregando productos a la orden n° ${ordenes.length}`) ;
     let articuloSeleccionado = idProducto-1;
     let cantidadSeleccionada = cantidad;
-    if (productos[articuloSeleccionado].stock >= cantidadSeleccionada){alert(`Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito`)}
-    else {alert(`NO hay suficiente stock disponible. Quedan ${productos[articuloSeleccionado].stock} unidades`)};
+    if (productos[articuloSeleccionado].stock >= cantidadSeleccionada){
+        dialogoInfo.innerHTML = `<p>Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito</p>`
+    }
+    else {
+        dialogoInfo.innerHTML = `NO hay suficiente stock disponible. Quedan ${productos[articuloSeleccionado].stock} unidades`;
+    };
+    alertaCarrito();
+    temporizadorAlerta();
     ordenes[ordenes.length-1].agregarProducto(productos[articuloSeleccionado], cantidadSeleccionada);
     actualizarLocalStorage();
     //Actualizamos DOM del carrito cada vez que agregamos un producto a la orden.
@@ -228,11 +234,27 @@ function escribirModalesHTML (arrayProductos){
 }
 
 const navCarrito = document.getElementById("nav-carrito");
-
 //Escribo por DOM la cantidad de productos en el carrito.
 navCarrito.innerHTML = `Carrito (${ordenes[ordenes.length-1].contadorProductosAgregados})`
-
 //Mostramos la orden por alert cada vez que hacemos click en el carrito...
 navCarrito.addEventListener("click", () => {
     (!ordenes[ordenes.length-1].productosOrden.length) ? alert("El carrito esta vacio") : ordenes[ordenes.length-1].mostrarOrden();
+    barraCarrito.classList.add("barraCarrito-active")
 })
+
+//Funciones para cambiar la clase del dialogoInfo luego de 2 segundos... Estas funciones son llamadas al hacer ejecutar la funcion "comprar".
+const dialogoInfo = document.getElementById("dialogoInfo");
+let identificadorDeTemporizador;
+function temporizadorAlerta() {
+  identificadorDeTemporizador = setTimeout(alertaCarrito, 2000);
+}
+function alertaCarrito() {
+  dialogoInfo.classList.toggle("dialogoInfo-active");
+}
+
+//Evento para abrir y cerrar SideBar del carrito.
+const barraCarrito = document.getElementById("barraCarrito");
+const barraCarritoCerrar = document.getElementById("barraCarrito-cerrar");
+barraCarritoCerrar.addEventListener("click", ()=>{
+    barraCarrito.classList.remove("barraCarrito-active");
+});
