@@ -318,7 +318,7 @@ h6 {
   display: flex;
   align-items: center;
   position: fixed;
-  z-index: 9999;
+  z-index: 99999;
   top: 80px;
   right: 5px;
   width: 20rem;
@@ -329,32 +329,40 @@ h6 {
   font-size: smaller;
   text-align: center;
   visibility: hidden;
-  transition: 1s;
+  opacity: 0;
+  transition: all 0.5s ease-in;
   background-color: #b68b23;
 }
 .dialogoInfo-active {
   visibility: visible;
+  opacity: 1;
 }
 
 .barraCarrito {
   display: flex;
   align-items: center;
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  right: 0;
-  width: 20rem;
+  width: 24rem;
   height: 100vh;
   border-top-left-radius: 5px;
   margin: 2px;
   padding: 5px;
   font-size: smaller;
   text-align: center;
+  background-color: white;
+}
+.barraCarrito-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  justify-content: flex-end;
+  background-color: transparent;
   visibility: hidden;
-  background-color: #dcb14a;
+  opacity: 0;
 }
 .barraCarrito-active {
   visibility: visible;
+  opacity: 1;
 }
 
 /*# sourceMappingURL=style.css.map */

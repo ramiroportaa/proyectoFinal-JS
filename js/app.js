@@ -238,8 +238,8 @@ const navCarrito = document.getElementById("nav-carrito");
 navCarrito.innerHTML = `Carrito (${ordenes[ordenes.length-1].contadorProductosAgregados})`
 //Mostramos la orden por alert cada vez que hacemos click en el carrito...
 navCarrito.addEventListener("click", () => {
-    (!ordenes[ordenes.length-1].productosOrden.length) ? alert("El carrito esta vacio") : ordenes[ordenes.length-1].mostrarOrden();
-    barraCarrito.classList.add("barraCarrito-active")
+    //(!ordenes[ordenes.length-1].productosOrden.length) ? alert("El carrito esta vacio") : ordenes[ordenes.length-1].mostrarOrden();
+    barraCarritoContainer.classList.toggle("barraCarrito-active");
 })
 
 //Funciones para cambiar la clase del dialogoInfo luego de 2 segundos... Estas funciones son llamadas al hacer ejecutar la funcion "comprar".
@@ -253,8 +253,15 @@ function alertaCarrito() {
 }
 
 //Evento para abrir y cerrar SideBar del carrito.
+const barraCarritoContainer = document.getElementById("barraCarrito-container");
 const barraCarrito = document.getElementById("barraCarrito");
 const barraCarritoCerrar = document.getElementById("barraCarrito-cerrar");
 barraCarritoCerrar.addEventListener("click", ()=>{
-    barraCarrito.classList.remove("barraCarrito-active");
+    barraCarritoContainer.classList.toggle("barraCarrito-active");
 });
+barraCarritoContainer.addEventListener("click", ()=>{
+    barraCarritoContainer.classList.toggle("barraCarrito-active");
+})
+barraCarrito.addEventListener("click", (e)=>{
+    e.stopPropagation();
+})
