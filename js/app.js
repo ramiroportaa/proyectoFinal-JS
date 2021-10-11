@@ -56,6 +56,10 @@ class Orden {
         console.log(`NO hay suficiente stock disponible. Quedan ${producto.stock} unidades`);
         }
     }
+    borrarProducto (producto){
+        let posicionProductoEnLaOrden = this.productosOrden.indexOf(producto);
+        this.productosOrden.splice(posicionProductoEnLaOrden, 1);
+    }
     calcularTotal(){
         let total = 0;
         for (let producto of this.productosOrden){
@@ -233,6 +237,17 @@ function escribirModalesHTML (arrayProductos){
 })
 }
 
+//Funciones para cambiar la clase del dialogoInfo luego de 2 segundos... Estas funciones son llamadas al hacer ejecutar la funcion "comprar".
+const dialogoInfo = document.getElementById("dialogoInfo");
+let identificadorDeTemporizador;
+function temporizadorAlerta() {
+  identificadorDeTemporizador = setTimeout(alertaCarrito, 2000);
+}
+function alertaCarrito() {
+  dialogoInfo.classList.toggle("dialogoInfo-active");
+}
+
+//Sidebar del carrito.
 const navCarrito = document.getElementById("nav-carrito");
 //Escribo por DOM la cantidad de productos en el carrito.
 navCarrito.innerHTML = `Carrito (${ordenes[ordenes.length-1].contadorProductosAgregados})`
@@ -243,16 +258,6 @@ navCarrito.addEventListener("click", () => {
     escribirProductosCarrito();
     barraCarritoContainer.classList.toggle("barraCarrito-active");
 })
-
-//Funciones para cambiar la clase del dialogoInfo luego de 2 segundos... Estas funciones son llamadas al hacer ejecutar la funcion "comprar".
-const dialogoInfo = document.getElementById("dialogoInfo");
-let identificadorDeTemporizador;
-function temporizadorAlerta() {
-  identificadorDeTemporizador = setTimeout(alertaCarrito, 2000);
-}
-function alertaCarrito() {
-  dialogoInfo.classList.toggle("dialogoInfo-active");
-}
 
 //Evento para abrir y cerrar SideBar del carrito.
 const barraCarritoContainer = document.getElementById("barraCarrito-container");
@@ -269,6 +274,7 @@ barraCarrito.addEventListener("click", (e)=>{
 })
 
 //Funcion para Escribir por DOM el codigo html de los items en el carrito.
+//Tambien se incluye la el evento de borrar producto del carrito.
 const barraCarritoListaItems = document.getElementById("barraCarrito-listaItems");
 function escribirProductosCarrito () {
     ordenes[ordenes.length-1].productosOrden.forEach((producto) =>{
@@ -280,8 +286,25 @@ function escribirProductosCarrito () {
         <p>${producto.nombre} x ${producto.cantidadCarrito}</p>
         <p>$${producto.precio}.-</p>
         </div>
-        <button id="barraCarrito-borrarItem" class="btn col-2" type="button"> <i class="fas fa-trash-alt"></i> </button>
+        <button id="barraCarrito-borrarItem-${producto.idProducto}" class="btn col-2" type="button"><i class="fas fa-trash-alt"></i></button>
         `
         barraCarritoListaItems.appendChild(contenedor);
+        //Almacenamos en constante el nodo de cada boton de borrar Item.
+        const borrarProducto = document.getElementById(`barraCarrito-borrarItem-${producto.idProducto}`);
+        //Añadimos manejador de evento click a dicho nodo.
+        borrarProducto.addEventListener("click", () => {
+            ordenes[ordenes.length-1].borrarProducto(producto);
+            actualizarLocalStorage();
+            location.reload();
+        });
     })
+    let contenedor = document.createElement("div");
+    contenedor.className = "row h5";
+    if (ordenes[ordenes.length-1].calcularTotal() == 0) {
+        contenedor.innerHTML = `<p>EL CARRITO ESTA VACIO</p>`
+    }
+    else{
+        contenedor.innerHTML = `<p>TOTAL $${ordenes[ordenes.length-1].calcularTotal()}.-</p>`
+    }
+    barraCarritoListaItems.appendChild(contenedor);
 }
