@@ -59,6 +59,8 @@ class Orden {
     borrarProducto (producto){
         let posicionProductoEnLaOrden = this.productosOrden.indexOf(producto);
         this.productosOrden.splice(posicionProductoEnLaOrden, 1);
+        actualizarLocalStorage();
+        location.reload();
     }
     calcularTotal(){
         let total = 0;
@@ -294,8 +296,6 @@ function escribirProductosCarrito () {
         //Añadimos manejador de evento click a dicho nodo.
         borrarProducto.addEventListener("click", () => {
             ordenes[ordenes.length-1].borrarProducto(producto);
-            actualizarLocalStorage();
-            location.reload();
         });
     })
     let contenedor = document.createElement("div");
