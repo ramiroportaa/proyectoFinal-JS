@@ -344,11 +344,10 @@ h6 {
   width: 24rem;
   height: 100vh;
   border-top-left-radius: 5px;
-  margin: 2px;
-  padding: 5px;
   font-size: smaller;
   text-align: center;
   background-color: white;
+  box-shadow: 0 0 10px gray;
 }
 .barraCarrito-container {
   display: flex;
@@ -363,6 +362,17 @@ h6 {
 .barraCarrito-active {
   visibility: visible;
   opacity: 1;
+}
+.barraCarrito-listaItems {
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: whitesmoke;
+}
+.barraCarrito-item {
+  border: 1px solid black;
 }
 
 /*# sourceMappingURL=style.css.map */

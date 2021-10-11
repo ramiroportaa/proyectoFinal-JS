@@ -239,6 +239,8 @@ navCarrito.innerHTML = `Carrito (${ordenes[ordenes.length-1].contadorProductosAg
 //Mostramos la orden por alert cada vez que hacemos click en el carrito...
 navCarrito.addEventListener("click", () => {
     //(!ordenes[ordenes.length-1].productosOrden.length) ? alert("El carrito esta vacio") : ordenes[ordenes.length-1].mostrarOrden();
+    barraCarritoListaItems.innerHTML = "";
+    escribirProductosCarrito();
     barraCarritoContainer.classList.toggle("barraCarrito-active");
 })
 
@@ -265,3 +267,21 @@ barraCarritoContainer.addEventListener("click", ()=>{
 barraCarrito.addEventListener("click", (e)=>{
     e.stopPropagation();
 })
+
+//Funcion para Escribir por DOM el codigo html de los items en el carrito.
+const barraCarritoListaItems = document.getElementById("barraCarrito-listaItems");
+function escribirProductosCarrito () {
+    ordenes[ordenes.length-1].productosOrden.forEach((producto) =>{
+        let contenedor = document.createElement("div");
+        contenedor.className = "row mb-2 barraCarrito-item";
+        contenedor.innerHTML = `
+        <img class="col-3" src="img/product-${producto.idProducto}.jpg" alt="${producto.nombre}" width="50px">
+        <div class="col-7">
+        <p>${producto.nombre} x ${producto.cantidadCarrito}</p>
+        <p>$${producto.precio}.-</p>
+        </div>
+        <button id="barraCarrito-borrarItem" class="btn col-2" type="button"> <i class="fas fa-trash-alt"></i> </button>
+        `
+        barraCarritoListaItems.appendChild(contenedor);
+    })
+}
