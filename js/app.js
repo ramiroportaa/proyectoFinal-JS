@@ -283,7 +283,7 @@ function escribirProductosCarrito () {
         let contenedor = document.createElement("div");
         contenedor.className = "row mb-2 barraCarrito-item";
         contenedor.innerHTML = `
-        <img class="col-3" src="img/product-${producto.idProducto}.jpg" alt="${producto.nombre}" width="50px">
+        <img class="col-3" src="img/product-${producto.idProducto}.jpg" alt="${producto.nombre}">
         <div class="col-7">
         <p>${producto.nombre} x ${producto.cantidadCarrito}</p>
         <p>$${producto.precio}.-</p>
@@ -301,7 +301,7 @@ function escribirProductosCarrito () {
     let contenedor = document.createElement("div");
     contenedor.className = "row h5";
     if (ordenes[ordenes.length-1].calcularTotal() == 0) {
-        contenedor.innerHTML = `<p>EL CARRITO ESTA VACIO</p>`
+        contenedor.innerHTML = `<p>El carrito está vacío</p>`
     }
     else{
         contenedor.innerHTML = `<p>TOTAL $${ordenes[ordenes.length-1].calcularTotal()}.-</p>`

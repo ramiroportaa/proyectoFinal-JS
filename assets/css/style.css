@@ -341,6 +341,7 @@ h6 {
 .barraCarrito {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 24rem;
   height: 100vh;
   border-top-left-radius: 5px;
@@ -367,12 +368,19 @@ h6 {
   align-items: center;
   justify-content: center;
   padding: 1px;
+  width: 21rem;
   max-height: 70vh;
   overflow-y: auto;
   background-color: whitesmoke;
 }
 .barraCarrito-item {
   border: 1px solid black;
+}
+.barraCarrito-botones {
+  justify-content: center;
+}
+.barraCarrito-botones a {
+  width: 15rem;
 }
 
 /*# sourceMappingURL=style.css.map */
