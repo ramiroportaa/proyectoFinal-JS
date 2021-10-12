@@ -287,10 +287,12 @@ const barraCarritoListaItems = document.getElementById("barraCarrito-listaItems"
 function escribirProductosCarrito () {
     ordenes[ordenes.length-1].productosOrden.forEach((producto) =>{
         let contenedor = document.createElement("div");
-        contenedor.className = "row mb-2 barraCarrito-item";
+        contenedor.className = "row mb-2 barraCarrito-item align-items-center";
         contenedor.innerHTML = `
-        <img class="col-3" src="img/product-${producto.idProducto}.jpg" alt="${producto.nombre}">
-        <div class="col-7">
+        <div class="col-4">
+        <img class="img-fluid rounded mx-auto d-block" src="img/product-${producto.idProducto}.jpg" alt="${producto.nombre}">
+        </div>
+        <div class="col-6">
         <p>${producto.nombre} x ${producto.cantidadCarrito}</p>
         <p>$${producto.precio}.-</p>
         </div>
