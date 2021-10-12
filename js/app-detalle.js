@@ -35,12 +35,12 @@ detalle.innerHTML = `
                   <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-gray mr-4 no-select">CANTIDAD</span>
                     <div class="quantity">
                       <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                      <input class="form-control border-0 shadow-0 p-0" type="text" value="1">
+                      <input id="cantidad-detalle-${productos[seleccionado].idProducto}" class="form-control border-0 shadow-0 p-0" type="text" value="1">
                       <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Agregar al carrito</a></div>
+                <div class="col-sm-3 pl-sm-0"><a id="agregarProducto-${productos[seleccionado].idProducto}-detalle" class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0">Agregar al carrito</a></div>
               </div><a class="btn btn-link text-dark p-0 mb-4" href="#"><i class="far fa-star mr-2"></i>Añadir a favoritos</a><br>
               <ul class="list-unstyled small d-inline-block">
                 <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">idProducto: </strong><span class="ml-2 text-muted">${productos[seleccionado].idProducto}</span></li>
@@ -54,3 +54,9 @@ const productosRelacionados = productos.slice(2,6);
 escribirProductosHTML(productosRelacionados);
 //Creamos por DOM los modales de cada producto Relacionado.
 escribirModalesHTML(productosRelacionados);
+
+//Asociamos el evento a botones recién creados (uso JQuery).
+$(`#agregarProducto-${productos[seleccionado].idProducto}-detalle`).on('click', function () {
+    const cantidad = parseInt($(`#cantidad-detalle-${productos[seleccionado].idProducto}`).val());
+    comprar(productos[seleccionado].idProducto, cantidad);
+});
