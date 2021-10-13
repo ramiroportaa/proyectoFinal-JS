@@ -116,24 +116,24 @@
               <!-- SHOP SIDEBAR-->
               <div class="col-lg-3 order-2 order-lg-1">
                 <h5 class="text-uppercase mb-4">Categorias</h5>
-                <div class="py-2 px-4 bg-dark text-white mb-3"><strong class="small text-uppercase font-weight-bold">Remeras</strong></div>
+                <div id="Remeras" class="py-2 px-4 bg-dark text-white mb-3 categorias"><strong class="small text-uppercase font-weight-bold">Remeras</strong></div>
                 <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="#">Lisas</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#">Estampadas</a></li>
+                  <li class="mb-2"><a id="Remeras-Lisas" class="reset-anchor categorias" href="#">Lisas</a></li>
+                  <li class="mb-2"><a id="Remeras-Estampadas" class="reset-anchor categorias" href="#">Estampadas</a></li>
                 </ul>
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase font-weight-bold">Pantalones</strong></div>
+                <div id="Pantalones" class="py-2 px-4 bg-dark text-white mb-3 categorias"><strong class="small text-uppercase font-weight-bold">Pantalones</strong></div>
                 <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="#">Jeans</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#">Joggers</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#">Joggings algodon</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#">Bermudas</a></li>
+                  <li class="mb-2"><a id="Pantalones-Jeans" class="reset-anchor categorias" href="#">Jeans</a></li>
+                  <li class="mb-2"><a id="Pantalones-Joggers" class="reset-anchor categorias" href="#">Joggers</a></li>
+                  <li class="mb-2"><a id="Pantalones-Algodon" class="reset-anchor categorias" href="#">Joggings algodon</a></li>
+                  <li class="mb-2"><a id="Pantalones-Bermudas" class="reset-anchor categorias" href="#">Bermudas</a></li>
                 </ul>
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase font-weight-bold">Zapatillas</strong></div>
+                <div id="Zapatillas" class="py-2 px-4 bg-dark text-white mb-3 categorias"><strong class="small text-uppercase font-weight-bold">Zapatillas</strong></div>
                 <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="#">SB Dunk</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#">Jordan</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#">Air Froce</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#">Air Max</a></li>
+                  <li class="mb-2"><a id="Zapatillas-SbDunk" class="reset-anchor categorias" href="#">SB Dunk</a></li>
+                  <li class="mb-2"><a id="Zapatillas-Jordan" class="reset-anchor categorias" href="#">Jordan</a></li>
+                  <li class="mb-2"><a id="Zapatillas-AirForce" class="reset-anchor categorias" href="#">Air Froce</a></li>
+                  <li class="mb-2"><a id="Zapatillas-AirMax" class="reset-anchor categorias" href="#">Air Max</a></li>
                 </ul>
                 <h6 class="text-uppercase mb-4">Rango de Precios</h6>
                 <div class="price-range pt-4 mb-5">
@@ -148,6 +148,8 @@
                   <input class="custom-control-input" id="customCheck1" type="checkbox">
                   <label class="custom-control-label text-small" for="customCheck1">Productos en Oferta</label>
                 </div>
+                <br>
+                <a id="" class="reset-anchor categorias text-uppercase categorias" href="#">Ver todos los productos</a>
               </div>
               <!-- SHOP LISTING-->
               <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
@@ -160,7 +162,7 @@
                       <li class="list-inline-item text-muted mr-3"><a class="reset-anchor p-0" href="#"><i class="fas fa-th-large"></i></a></li>
                       <li class="list-inline-item text-muted mr-3"><a class="reset-anchor p-0" href="#"><i class="fas fa-th"></i></a></li>
                       <li class="list-inline-item">
-                        <select class="selectpicker ml-auto" name="sorting" data-width="200" data-style="bs-select-form-control" data-title="Default sorting">
+                        <select id="ordenarPor" class="selectpicker ml-auto" name="sorting" data-width="200" data-style="bs-select-form-control" data-title="Default sorting">
                           <option value="default">Por defecto</option>
                           <option value="popularity">Populares</option>
                           <option value="low-high">Precio: Menor a Mayor</option>

@@ -24,6 +24,14 @@
         }
     }
 }
+//Categorias
+.categorias{
+  color: black;
+  cursor: pointer;
+  strong:hover {
+    color: #dcb14a;
+  }
+}
 //NOUISLIDER
 .noUi{
     &-target {

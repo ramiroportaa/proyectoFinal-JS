@@ -81,6 +81,14 @@
   color: #aaa;
 }
 
+.categorias {
+  color: black;
+  cursor: pointer;
+}
+.categorias strong:hover {
+  color: #dcb14a;
+}
+
 .noUi-target {
   background: #efefef;
   border-radius: 0;

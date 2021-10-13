@@ -82,16 +82,16 @@ class Orden {
 const productos = []
 
 //Añadimos por metodo push los productos a ofrecer (a modo de ejemplo).
-productos.push(new Producto("Air Force Goretex", "Zapatillas", 2800, 7));
-productos.push(new Producto("Zapatillas Nike SB Dunk", "Zapatillas", 4500, 3));
-productos.push(new Producto("Remera Levis azul", "Remeras", 1500, 2));
+productos.push(new Producto("Air Force Goretex", "Zapatillas-AirForce", 2800, 7));
+productos.push(new Producto("Zapatillas Nike SB Dunk", "Zapatillas-SbDunk", 4500, 3));
+productos.push(new Producto("Remera Levis azul", "Remeras-Estampadas", 1500, 2));
 productos.push(new Producto("Camisa de fibrana MC", "Camisas", 2500, 3));
-productos.push(new Producto("Remera VANS estampada", "Remeras", 1800));
-productos.push(new Producto("Zapatillas Nike SB Dunk gris", "Zapatillas", 4500, 4));
-productos.push(new Producto("Jogger Gabardina negro AM", "Pantalones", 2500, 2));
-productos.push(new Producto("Zapatillas Nike SB Dunk Green Eyes", "Zapatillas", 4500, 1));
-productos.push(new Producto("Remera VANS estampada", "Remeras", 1800,5));
-productos.push(new Producto("Jean Deep Chupin con roturas", "Pantalones", 3000, 1));
+productos.push(new Producto("Remera VANS estampada", "Remeras-Estampadas", 1800));
+productos.push(new Producto("Zapatillas Nike SB Dunk gris", "Zapatillas-SbDunk", 4500, 4));
+productos.push(new Producto("Jogger Gabardina negro AM", "Pantalones-Joggers", 2500, 2));
+productos.push(new Producto("Zapatillas Nike SB Dunk Green Eyes", "Zapatillas-SbDunk", 4500, 1));
+productos.push(new Producto("Remera VANS estampada", "Remeras-Estampadas", 1800,5));
+productos.push(new Producto("Jean Deep Chupin con roturas", "Pantalones-Jeans", 3000, 1));
 productos.push(new Producto("Camisa de fibrana MC", "Camisas", 2500, 3));
 productos.push(new Producto("Camisa de fibrana MC", "Camisas", 2500));
 
