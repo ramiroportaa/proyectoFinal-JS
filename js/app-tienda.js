@@ -18,4 +18,23 @@ for (i=0; i< categorias.length; i++) {
     categorias[i].addEventListener("click", function () {
         filtroGrupo(this.id);
     });
-}
+};
+
+//Ordenar productos E-Shop (evento del select).
+document.getElementById("ordenarPor").addEventListener("change", function () {
+    let productosOrdenado;
+    switch (this.value) {
+        case "default":
+            productosOrdenado = productos.slice();
+            break;
+        case "low-high":
+            //Uso .slice() para que se almacene un nuevo array en productosOrdenado (y no se haga referencia al array de productos y se modifique este ultimo).
+            productosOrdenado = productos.slice().sort((a,b)=>a.precio-b.precio);
+            break;
+        case "high-low":
+            productosOrdenado = productos.slice().sort((a,b)=>b.precio-a.precio);
+            break;
+    }
+    productosHTML.innerHTML = "";
+    escribirProductosHTML(productosOrdenado, 4);
+});
