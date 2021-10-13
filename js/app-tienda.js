@@ -1,7 +1,8 @@
-//Creamos las Cards de articulos desde el DOM.
 const productosHTML = document.getElementById("productos");
-escribirProductosHTML(productos, 4);
+let vistaTienda = parseInt(localStorage.getItem("vista-tienda"));
 
+//Creamos las Cards de articulos desde el DOM.
+escribirProductosHTML(productos, vistaTienda);
 //Creamos por DOM los modales de cada producto.
 escribirModalesHTML(productos);
 
@@ -13,7 +14,7 @@ let productosMostrados = productos;
 function filtroGrupo (grupo) {
     productosMostrados = productos.filter(producto => producto.grupo.startsWith(grupo));
     productosHTML.innerHTML = "";
-    (!productosMostrados.length) ? productosHTML.innerHTML = `<h4>No se encontraron ${grupo}</h4> ` : escribirProductosHTML(productosMostrados, 4);
+    (!productosMostrados.length) ? productosHTML.innerHTML = `<h4>No se encontraron ${grupo}</h4> ` : escribirProductosHTML(productosMostrados, vistaTienda);
     //Colocamos el select en el valor "default" cada vez que filtramos asi no queda marcando el ultimo filtro pero sin filtrar realmente los productos (uso JQuery).
     $("#ordenarPor").val('default');
 };
@@ -41,4 +42,18 @@ document.getElementById("ordenarPor").addEventListener("change", function () {
     }
     productosHTML.innerHTML = "";
     escribirProductosHTML(productosOrdenado, 4);
+});
+
+//Vista de la tienda (uso JQuery).
+$("#vista-3").click(() =>{
+    localStorage.setItem("vista-tienda", 4);
+    vistaTienda = 4;
+    productosHTML.innerHTML = "";
+    escribirProductosHTML(productosMostrados, 4);
+});
+$("#vista-2").click(() =>{
+    localStorage.setItem("vista-tienda", 6);
+    vistaTienda = 6;
+    productosHTML.innerHTML = "";
+    escribirProductosHTML(productosMostrados, 6);
 });
