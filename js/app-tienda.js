@@ -50,10 +50,12 @@ $("#vista-3").click(() =>{
     vistaTienda = 4;
     productosHTML.innerHTML = "";
     escribirProductosHTML(productosMostrados, 4);
+    $("#ordenarPor").val('default');
 });
 $("#vista-2").click(() =>{
     localStorage.setItem("vista-tienda", 6);
     vistaTienda = 6;
     productosHTML.innerHTML = "";
     escribirProductosHTML(productosMostrados, 6);
+    $("#ordenarPor").val('default');
 });
