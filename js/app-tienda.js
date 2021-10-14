@@ -23,9 +23,10 @@ const categorias = document.getElementsByClassName("categorias");
 for (i=0; i< categorias.length; i++) {
     categorias[i].addEventListener("click", function () {
         filtroGrupo(this.id);
+        window.location.hash = ""; //Modifico el # de la URL por si queda pegado cuando vengo de clickear en las "principales categorias" de la home.
     });
 };
-//Filtro por rango de precios.
+//Filtro por rango de precios (use noUiSlider).
 function filtroRango (){
     let valorMin = parseInt(range.noUiSlider.get()[0].slice(1));
     let valorMax = parseInt(range.noUiSlider.get()[1].slice(1));
@@ -33,7 +34,7 @@ function filtroRango (){
     productosHTML.innerHTML = "";
     (!productosMostrados.length) ? productosHTML.innerHTML = `<h4>No se encontraron productos entre ${valorMin} y ${valorMax}</h4> ` : escribirProductosHTML(productosMostrados, vistaTienda);
 };
-//Aplico filtro de rango a evento sobre el checkbox.
+//Aplico filtro de rango a evento sobre el checkbox. (Uso JQuery).
 $("#range-aplicar").change( function () {
     if ($(this).is(":checked")){
         filtroRango();
@@ -76,3 +77,19 @@ $("#vista-2").click(() =>{
     escribirProductosHTML(productosMostrados, 6);
     $("#ordenarPor").val('default');
 });
+
+//Filtros segun hash de la URL (para cuando se redirige desde los enlaces de la home).
+switch (window.location.hash) {
+    case "#Camisas0":
+        filtroGrupo("Camisas")
+        break;
+    case "#Remeras0":
+        filtroGrupo("Remeras")
+        break;
+    case "#Pantalones0":
+        filtroGrupo("Pantalones")
+        break;
+    case "#Zapatillas0":
+        filtroGrupo("Zapatillas")
+        break;        
+};
