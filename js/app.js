@@ -154,7 +154,7 @@ function escribirProductosHTML (arrayProductos, columnas=3) {
     const productosHTML = document.getElementById("productos");
     arrayProductos.forEach((producto) => {
         let contenedor = document.createElement("div");
-        contenedor.className = `col-xl-${columnas} col-lg-4 col-sm-6`
+        contenedor.className = `col-xl-${columnas} col-lg-${columnas} col-sm-6`
         //Definimos el innerHTML del elemento con una plantilla de texto
         contenedor.innerHTML = `<!-- PRODUCT ${producto.idProducto}-->
                         <div class="product text-center">

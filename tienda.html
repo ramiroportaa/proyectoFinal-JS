@@ -142,6 +142,10 @@
                     <div class="col-6"><strong class="small font-weight-bold text-uppercase">Desde</strong></div>
                     <div class="col-6 text-end"><strong class="small font-weight-bold text-uppercase">Hasta</strong></div>
                   </div>
+                  <div class="custom-control custom-checkbox mt-2 text-center">
+                    <input id="range-aplicar" class="custom-control-input" type="checkbox">
+                    <label class="custom-control-label text-small" for="range-aplicar">Aplicar filtro de rango</label>
+                  </div>
                 </div>
 <!--                 <h6 class="text-uppercase mb-3">VER SOLO</h6>
                 <div class="custom-control custom-checkbox mb-1">
@@ -346,11 +350,6 @@
     <script src="vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
     <!-- NOUISLIDER -->
     <script src="vendor/nouislider/nouislider.min.js"></script>
-    <!-- JS del template que use -->
-    <script src="js/front.js" defer></script>
-    <!-- JavaScrpit -->
-    <script src="js/app.js"></script>
-    <script src="js/app-tienda.js"></script>
     <!-- NOUISLIDER CONFIG -->
     <script>
       var range = document.getElementById('range');
@@ -376,7 +375,11 @@
             }
           }
       });
-      
     </script>
+    <!-- JS del template que use -->
+    <script src="js/front.js" defer></script>
+    <!-- JavaScrpit -->
+    <script src="js/app.js"></script>
+    <script src="js/app-tienda.js"></script>
 </body>
 </html>

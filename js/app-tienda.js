@@ -25,6 +25,23 @@ for (i=0; i< categorias.length; i++) {
         filtroGrupo(this.id);
     });
 };
+//Filtro por rango de precios.
+function filtroRango (){
+    let valorMin = parseInt(range.noUiSlider.get()[0].slice(1));
+    let valorMax = parseInt(range.noUiSlider.get()[1].slice(1));
+    productosMostrados = productos.filter(producto => producto.precio >= valorMin && producto.precio <= valorMax);
+    productosHTML.innerHTML = "";
+    (!productosMostrados.length) ? productosHTML.innerHTML = `<h4>No se encontraron productos entre ${valorMin} y ${valorMax}</h4> ` : escribirProductosHTML(productosMostrados, vistaTienda);
+};
+//Aplico filtro de rango a evento sobre el checkbox.
+$("#range-aplicar").change( function () {
+    if ($(this).is(":checked")){
+        filtroRango();
+    }else{
+        filtroGrupo(""); //Llamamos filtroGrupo con parametro "" (string vacio) ya que con esto como condicion, todos los productos pasan ese filtro.
+    }
+});
+
 //Ordenar productos E-Shop (evento del select).
 document.getElementById("ordenarPor").addEventListener("change", function () {
     let productosOrdenado;
