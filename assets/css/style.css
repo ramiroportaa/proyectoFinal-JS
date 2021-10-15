@@ -249,6 +249,25 @@ h6 {
   color: inherit;
 }
 
+.media {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.media-body {
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.reset-anchor {
+  color: inherit;
+  transition: all 0.3s;
+}
+.reset-anchor:hover, .reset-anchor .reset-anchor:focus {
+  text-decoration: none;
+}
+
 .product img {
   -webkit-filter: grayscale(40%);
   filter: grayscale(40%);

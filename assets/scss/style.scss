@@ -98,6 +98,23 @@ h6 {
 	line-height: 1.2;
 	color: inherit;
 }
+.media {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	&-body {
+		-ms-flex: 1;
+		flex: 1;
+	}
+}
+.reset-anchor {
+	color: inherit;
+	transition: all 0.3s;
+	&:hover, .reset-anchor:focus {
+		text-decoration: none;
+	}
+}
 
 //Productos
 .product {

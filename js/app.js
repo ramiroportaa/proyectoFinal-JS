@@ -36,7 +36,7 @@ class Orden {
     }
     agregarProducto(producto, cantidad){
         if (isNaN(cantidad)){
-            alert("Debe ingresar el NUMERO de cantidades que desea")
+            alertaCarrito(`<p>Debe ingresar el NUMERO de cantidades que desea</p>`);
         }
         else if (producto.stock >= cantidad){
             //Si el producto ya esta agregado al carrito... Solo aumentamos la cantidad.
@@ -51,9 +51,6 @@ class Orden {
             }
             producto.disminuirStock(cantidad);
             this.contadorProductosAgregados += parseInt(cantidad);
-        }
-        else{
-        console.log(`NO hay suficiente stock disponible. Quedan ${producto.stock} unidades`);
         }
     }
     borrarProducto (producto){
@@ -128,13 +125,15 @@ function comprar (idProducto, cantidad=1) {
     let articuloSeleccionado = idProducto-1;
     let cantidadSeleccionada = cantidad;
     if (productos[articuloSeleccionado].stock >= cantidadSeleccionada){
-        dialogoInfo.innerHTML = `<p>Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito</p>`
+        if (cantidadSeleccionada > 0){
+            alertaCarrito(`<p>Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito</p>`); 
+        }else if (cantidadSeleccionada < 0){
+            alertaCarrito(`<p>Usted quitó ${-cantidad} unidades de ${productos[articuloSeleccionado].nombre} del carrito</p>`); 
+        }
     }
     else {
-        dialogoInfo.innerHTML = `NO hay suficiente stock disponible. Quedan ${productos[articuloSeleccionado].stock} unidades`;
+        alertaCarrito(`<p>NO hay suficiente stock disponible. Quedan ${productos[articuloSeleccionado].stock} unidades</p>`); 
     };
-    alertaCarrito();
-    temporizadorAlerta();
     ordenes[ordenes.length-1].agregarProducto(productos[articuloSeleccionado], cantidadSeleccionada);
     actualizarLocalStorage();
     //Actualizamos DOM del carrito cada vez que agregamos un producto a la orden.
@@ -164,7 +163,7 @@ function escribirProductosHTML (arrayProductos, columnas=3) {
                             <ul class="mb-0 list-inline">
                                 <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-star"></i></a></li>
                                 <li class="list-inline-item m-0 p-0"><a id="agregarProducto-${producto.idProducto}" class="btn btn-sm btn-dark" href="#">Agregar al carrito</a></li>
-                                <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView-${producto.idProducto}" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                                <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView-${producto.idProducto}" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                             </ul>
                             </div>
                         </div>
@@ -219,7 +218,7 @@ function escribirModalesHTML (arrayProductos){
                                                             <p class="text-small mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.</p>
                                                                 <div class="row align-items-stretch mb-4">
                                                                     <div class="col-sm-7 pr-sm-0">
-                                                                        <div class="border d-flex align-items-center justify-content-between py-1 px-3"><span class="small text-uppercase text-gray mr-4 no-select">Cantidad</span>
+                                                                        <div class="border d-flex align-items-center justify-content-between py-1 px-3"><span class="small text-uppercase text-gray me-4 no-select">Cantidad</span>
                                                                             <div class="quantity">
                                                                             <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
                                                                             <input id="cantidad-modal-${producto.idProducto}" class="form-control border-0 shadow-0 p-0" type="text" value="1">
@@ -229,7 +228,7 @@ function escribirModalesHTML (arrayProductos){
                                                                     </div>
                                                                     <div class="col-sm-5 pl-sm-0"><a id="agregarProducto-${producto.idProducto}-modal" class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0">Agregar al carrito</a></div>
                                                                 </div>
-                                                                <a class="btn btn-link text-dark p-0" href="#"><i class="far fa-star mr-2"></i>Añadir a favoritos</a>
+                                                                <a class="btn btn-link text-dark p-0" href="#"><i class="far fa-star me-2"></i>Añadir a favoritos</a>
                                                         </div>
                                                 </div>
                                             </div>
@@ -247,12 +246,17 @@ function escribirModalesHTML (arrayProductos){
 
 //Funciones para cambiar la clase del dialogoInfo luego de 2 segundos... Estas funciones son llamadas al hacer ejecutar la funcion "comprar".
 const dialogoInfo = document.getElementById("dialogoInfo");
+function verAlerta() {
+    dialogoInfo.classList.toggle("dialogoInfo-active");
+}
 let identificadorDeTemporizador;
 function temporizadorAlerta() {
-  identificadorDeTemporizador = setTimeout(alertaCarrito, 2000);
+  identificadorDeTemporizador = setTimeout(verAlerta, 2000);
 }
-function alertaCarrito() {
-  dialogoInfo.classList.toggle("dialogoInfo-active");
+function alertaCarrito(contenidoHTML){
+    dialogoInfo.innerHTML = contenidoHTML;
+    verAlerta();
+    temporizadorAlerta();
 }
 
 //Sidebar del carrito.
@@ -281,8 +285,8 @@ barraCarrito.addEventListener("click", (e)=>{
     e.stopPropagation();
 })
 
-//Funcion para Escribir por DOM el codigo html de los items en el carrito.
-//Tambien se incluye la el evento de borrar producto del carrito.
+//Funcion para Escribir por DOM el codigo html de los items en el sidebar del carrito.
+//Tambien se incluye el evento de borrar producto del carrito.
 const barraCarritoListaItems = document.getElementById("barraCarrito-listaItems");
 function escribirProductosCarrito () {
     ordenes[ordenes.length-1].productosOrden.forEach((producto) =>{
