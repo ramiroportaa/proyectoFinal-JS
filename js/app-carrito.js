@@ -41,6 +41,7 @@ ordenes[ordenes.length-1].productosOrden.forEach(producto => {
             //Modificamos el DOM del total de la Orden.
             $("#subtotalOrden").text(`$${ordenes[ordenes.length-1].calcularTotal()}.-`)
             $("#totalOrden").text(`$${ordenes[ordenes.length-1].calcularTotal()}.-`)
+            $("#descOrden").addClass("d-none");
         }else if (parseInt(this.value) == 0) {
             ordenes[ordenes.length-1].borrarProducto(producto);
         }
@@ -59,3 +60,22 @@ $("#subtotalOrden").text(`$${ordenes[ordenes.length-1].calcularTotal()}.-`)
 $("#totalOrden").text(`$${ordenes[ordenes.length-1].calcularTotal()}.-`)
 
 //Formulario de cupon.
+//Borramos descuento del localStorage para que no se aplique el descuento al pasar al checkout en caso de no haber puesto un cupon.
+localStorage.setItem("desc", 0);
+//Asociamos el evento submit al formulario
+$("#formCupon").submit((e) =>{
+    e.preventDefault();
+    let cupon = $("#formInput")[0].value;
+    if (cupon === "coderhouse") {
+        const porcentaje = 10;
+        const descuento = ordenes[ordenes.length-1].descuentoYtotal(porcentaje)[0];
+        const total = ordenes[ordenes.length-1].descuentoYtotal(porcentaje)[1];
+        $("#descOrden").removeClass("d-none");
+        $($("#descOrden").children()[0]).text( `Descuento ${porcentaje}%` );
+        $($("#descOrden").children()[1]).text( `$${descuento}.-`);
+        $("#totalOrden").text(`$${total}.-`);
+        localStorage.setItem("desc", porcentaje);
+    }else {
+        alertaInfo("El cupon ingresado no es valido");
+    } 
+})

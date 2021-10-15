@@ -21,9 +21,6 @@ class Producto {
     actualizarPrecio (porcentaje){
         this.precio = this.precio + this.precio*porcentaje/100;
     }
-    toString(){
-        return `idProducto: ${this.idProducto}, nombre: ${this.nombre}, precio: $${this.precio}.- , cantidad: ${this.cantidadCarrito}`;
-    }
 }
 
 //Creamos Clase Orden para facilitar la creacion de una orden cada vez que un cliente hace una.
@@ -36,7 +33,7 @@ class Orden {
     }
     agregarProducto(producto, cantidad){
         if (isNaN(cantidad)){
-            alertaCarrito(`<p>Debe ingresar el NUMERO de cantidades que desea</p>`);
+            alertaInfo(`<p>Debe ingresar el NUMERO de cantidades que desea</p>`);
         }
         else if (producto.stock >= cantidad){
             //Si el producto ya esta agregado al carrito... Solo aumentamos la cantidad.
@@ -66,12 +63,12 @@ class Orden {
         }
         return total;
     }
-    mostrarOrden(){ //Muestra de la orden por alert
-        let productosOrden = "";
-        for (let producto of this.productosOrden){
-            productosOrden += "\n→ " + producto.toString();
-        }
-        alert(`Orden n°${this.idOrden} TOTAL: $${this.calcularTotal()}, Detalle: ${productosOrden}`);
+    descuentoYtotal(porcentaje=0){
+        let base = this.calcularTotal();
+        let descuento = base*porcentaje/100;
+        let total = base - descuento;
+        const descuentoOrden = [descuento, total];
+        return descuentoOrden; 
     }
 }
 
@@ -126,13 +123,13 @@ function comprar (idProducto, cantidad=1) {
     let cantidadSeleccionada = cantidad;
     if (productos[articuloSeleccionado].stock >= cantidadSeleccionada){
         if (cantidadSeleccionada > 0){
-            alertaCarrito(`<p>Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito</p>`); 
+            alertaInfo(`<p>Usted añadio ${cantidad} unidades de ${productos[articuloSeleccionado].nombre} al carrito</p>`); 
         }else if (cantidadSeleccionada < 0){
-            alertaCarrito(`<p>Usted quitó ${-cantidad} unidades de ${productos[articuloSeleccionado].nombre} del carrito</p>`); 
+            alertaInfo(`<p>Usted quitó ${-cantidad} unidades de ${productos[articuloSeleccionado].nombre} del carrito</p>`); 
         }
     }
     else {
-        alertaCarrito(`<p>NO hay suficiente stock disponible. Quedan ${productos[articuloSeleccionado].stock} unidades</p>`); 
+        alertaInfo(`<p>NO hay suficiente stock disponible. Quedan ${productos[articuloSeleccionado].stock} unidades</p>`); 
     };
     ordenes[ordenes.length-1].agregarProducto(productos[articuloSeleccionado], cantidadSeleccionada);
     actualizarLocalStorage();
@@ -253,7 +250,7 @@ let identificadorDeTemporizador;
 function temporizadorAlerta() {
   identificadorDeTemporizador = setTimeout(verAlerta, 2000);
 }
-function alertaCarrito(contenidoHTML){
+function alertaInfo(contenidoHTML){
     dialogoInfo.innerHTML = contenidoHTML;
     verAlerta();
     temporizadorAlerta();
@@ -270,7 +267,6 @@ navCarrito.addEventListener("click", () => {
     escribirProductosCarrito();
     barraCarritoContainer.classList.toggle("barraCarrito-active");
 })
-
 //Evento para abrir y cerrar SideBar del carrito.
 const barraCarritoContainer = document.getElementById("barraCarrito-container");
 const barraCarrito = document.getElementById("barraCarrito");
@@ -284,7 +280,6 @@ barraCarritoContainer.addEventListener("click", ()=>{
 barraCarrito.addEventListener("click", (e)=>{
     e.stopPropagation();
 })
-
 //Funcion para Escribir por DOM el codigo html de los items en el sidebar del carrito.
 //Tambien se incluye el evento de borrar producto del carrito.
 const barraCarritoListaItems = document.getElementById("barraCarrito-listaItems");

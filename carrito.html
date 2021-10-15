@@ -142,13 +142,14 @@
                 <div class="card-body">
                   <h5 class="text-uppercase mb-4">Total de la orden</h5>
                   <ul class="list-unstyled mb-0">
-                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span id="subtotalOrden" class="text-muted small">$0.-</span></li>
+                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small fw-bold">Subtotal</strong><span id="subtotalOrden" class="text-muted small">$0.-</span></li>
+                    <li id="descOrden" class="d-flex align-items-center justify-content-between d-none"><strong class="text-uppercase small fw-normal">Descuento %</strong><span class="text-muted small">$0.-</span></li>
                     <li class="border-bottom my-2"></li>
                     <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span id="totalOrden" >$0.-</span></li>
                     <li>
                       <form id="formCupon" action="#">
                         <div class="form-group mb-0">
-                          <input class="form-control" type="text" placeholder="Ingresa tu cupon">
+                          <input id="formInput" class="form-control" type="text" placeholder="Ingresa tu cupon">
                           <button class="btn btn-dark btn-sm col-12" type="submit"> <i class="fas fa-gift me-2"></i>Aplicar cupon</button>
                         </div>
                       </form>
