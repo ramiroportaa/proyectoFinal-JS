@@ -16,6 +16,13 @@
     <title>HEY BRO Indumentaria Masculina | HOME</title>
 </head>
 <body>
+    <div id="bienvenida" class="align-items-center justify-content-center text-center">
+      <div>
+        <img style="width: 15%; min-width: 100px;" src="img/logo.png" alt="HEY BRO">
+        <h2>Bienvenidos</h2>
+      </div>
+    </div>
+
     <header>
         <!-- Menu de navegacion -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0 bg-white">
@@ -64,15 +71,24 @@
 
         <!--Section: Portada-->
         <section>
-            <div id="portada" class="bg-image vh-100" style="
-                background-image: url(img/portada.jpg);">
+            <div id="portada" class="bg-image" style="
+                background-image: url(img/portada.jpg); width: 100vw; height: 100vh;">
               <div class="container py-5">
                 <div class="row px-4 px-lg-5">
                   <div class="col-lg-6">
-                    <h2 class="portada-text">
+                    <div style="min-height: 22rem;">
+                      <h2 class="portada-text" style="display: none;">
                       10%OFF ABONANDO EN EFECTIVO O TRANSFE<wbr>RENCIA.
-                    </h2>
-                    <a class="btn btn-dark portada-boton" href="tienda.html">IR A LA TIENDA</a>
+                      </h2>
+                      <h2 class="portada-text" style="display: none;">
+                        SOMOS <br> TU <br> MEJOR <br> OPCION.
+                      </h2>
+                      <h2 class="portada-text" style="display: none;">
+                        COMIENZA A COMPRAR AHORA!
+                      </h2>
+                    </div>
+                    <a class="btn portada-boton"  href="tienda.html">IR A LA TIENDA</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -277,6 +293,9 @@
       <!-- Copyright -->
     </footer>
 
+    <!-- JavaScript files-->
+    <!-- JQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
     <!-- BOOTSTRAP JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
