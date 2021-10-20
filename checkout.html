@@ -113,7 +113,7 @@
           <h2 class="h5 text-uppercase mb-4">Detalles de facturacion y envio</h2>
           <div class="row">
             <div class="col-lg-8">
-              <form action="#">
+              <form id="form-checkout" action="#">
                 <div class="row">
                   <div class="col-lg-6 form-group">
                     <label class="text-small text-uppercase" for="firstName">Nombre</label>
@@ -198,17 +198,12 @@
                 </div>
               </form>
             </div>
-            <!-- ORDER SUMMARY-->
+            <!-- RESUMEN DE ORDEN-->
             <div class="col-lg-4">
               <div class="card border-0 rounded-0 p-lg-4 bg-light">
                 <div class="card-body">
                   <h5 class="text-uppercase mb-4">Tu orden</h5>
                   <ul id="productos" class="list-unstyled mb-0">
-                    <li class="d-flex align-items-center justify-content-between"><strong class="small font-weight-bold">nombre producto</strong><span class="text-muted small">$250</span></li>
-                    <li class="border-bottom my-2"></li>
-                    <li class="d-flex align-items-center justify-content-between"><strong class="small font-weight-bold">nombre producto</strong><span class="text-muted small">$350</span></li>
-                    <li class="border-bottom my-2"></li>
-                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$600</span></li>
                   </ul>
                 </div>
               </div>
@@ -362,8 +357,6 @@
       <!-- OWL Carrousel -->
       <script src="vendor/owl.carousel2/owl.carousel.min.js"></script>
       <script src="vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
-      <!-- JS del template que use -->
-      <script src="js/front.js" defer></script>
       <!-- JavaScrpit -->
       <script src="js/app.js"></script>
       <script src="js/app-checkout.js"></script>
