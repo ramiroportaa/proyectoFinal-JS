@@ -40,23 +40,6 @@ $(function () {
 
 
       /* ===============================================================
-           BOOTSTRAP SELECT
-        =============================================================== */
-      $('.selectpicker').on('change', function () {
-          $(this).closest('.dropdown').find('.filter-option-inner-inner').addClass('selected');
-      });
-
-
-      /* ===============================================================
-           TOGGLE ALTERNATIVE BILLING ADDRESS
-        =============================================================== */
-      $('#alternateAddressCheckbox').on('change', function () {
-         var checkboxId = '#' + $(this).attr('id').replace('Checkbox', '');
-         $(checkboxId).toggleClass('d-none');
-      });
-
-
-      /* ===============================================================
            DISABLE UNWORKED ANCHORS
         =============================================================== */
       $('a[href="#"]').on('click', function (e) {

@@ -2,7 +2,25 @@
 const formulario = document.getElementById("form-checkout");
 const inputOtroDomicilio = document.getElementById("alternateAddressCheckbox");
 const otroDomicilio = document.getElementById("alternateAddress");
+const iNombre = document.getElementById("nombre");
+const iApellido = document.getElementById("apellido");
+const iEmail = document.getElementById("email");
+const iTel = document.getElementById("tel");
+const iDni = document.getElementById("dni");
+const iDomicilio = document.getElementById("domicilio");
+const iCiudad = document.getElementById("ciudad");
+const iProvincia = document.getElementById("provincia");
+const iNombreEnvio = document.getElementById("nombreEnvio");
+const iApellidoEnvio = document.getElementById("apellidoEnvio");
+const iEmailEnvio = document.getElementById("emailEnvio");
+const iTelEnvio = document.getElementById("telEnvio");
+const iDniEnvio = document.getElementById("dniEnvio");
+const iDomicilioEnvio = document.getElementById("domicilioEnvio");
+const iCiudadEnvio = document.getElementById("ciudadEnvio");
+const iProvinciaEnvio = document.getElementById("provinciaEnvio");
 const orden = document.getElementById("productos");
+//Bandera para el evento submit del formulario validado.
+let bandera = false;
 
 //RESUMEN DE ORDEN.
 //Agregamos al DOM cada producto en la orden.
@@ -36,3 +54,83 @@ orden.appendChild(total);
 inputOtroDomicilio.addEventListener("change",()=>{
     otroDomicilio.classList.toggle("d-none");
 });
+
+formulario.addEventListener("submit", function (e){
+    e.preventDefault();
+    validarForm();
+    if (bandera) {
+        Swal.fire({
+            title: '<strong>Orden enviada</strong>',
+            icon: 'success',
+            html:
+              `Seras redireccionado` ,
+            showCloseButton: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+            focusConfirm: false,
+            timer: 2000
+          }).then(()=>{
+              location.replace("index.html");
+          })
+        finalizarOrden();
+    }
+});
+
+function validarForm () {
+    let inputs = document.getElementsByClassName("form-input");
+    //Revisamos la primera parte del formulario.
+    for (let input = 0; input < 8; input++){
+        if (inputs[input].value == ""){
+            bandera = false;
+            inputs[input].classList.add("border-danger");
+            Swal.fire({
+                title: '<strong>Hay campos <u>vacios</u></strong>',
+                icon: 'info',
+                html:
+                  `Revise los campos en rojo` ,
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+              });
+        } else{
+            bandera = true;
+        };
+        //Borramos la clase border-danger cuando el input tenga algun value.
+        inputs[input].addEventListener("change",()=>{
+            if (inputs[input].value != ""){
+                inputs[input].classList.remove("border-danger");
+            }else{
+                inputs[input].classList.add("border-danger");
+            }
+        })
+    }
+    //Si el checkbox de "enviar a domicilio distinto al de facturacion" esta activo, validamos la 2da parte tambien.
+    if (inputOtroDomicilio.checked){
+        for (let input = 8; input < 16; input++){
+            if (inputs[input].value == ""){
+                bandera = false;
+                inputs[input].classList.add("border-danger");
+                Swal.fire({
+                    title: '<strong>Hay campos <u>vacios</u></strong>',
+                    icon: 'info',
+                    html:
+                      `Revise los campos en rojo` ,
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                  });
+            }else{
+                bandera = true;
+            };
+            //Borramos la clase border-danger cuando el input tenga algun value.
+            inputs[input].addEventListener("change",()=>{
+                if (inputs[input].value != ""){
+                    inputs[input].classList.remove("border-danger");
+                }else{
+                    inputs[input].classList.add("border-danger");
+                }
+            })
+        }
+    }
+    
+}

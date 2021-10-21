@@ -141,7 +141,7 @@ function comprar (idProducto, cantidad=1) {
 function finalizarOrden (){
     ordenes.push(new Orden());
     actualizarLocalStorage();
-    location.reload();
+    //location.reload();
 }
 
 //Creamos funcion para no repetir codigo que cree por DOM las cards de los productos en cada pagina.
