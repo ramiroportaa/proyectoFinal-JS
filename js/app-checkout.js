@@ -19,6 +19,7 @@ const iDomicilioEnvio = document.getElementById("domicilioEnvio");
 const iCiudadEnvio = document.getElementById("ciudadEnvio");
 const iProvinciaEnvio = document.getElementById("provinciaEnvio");
 const orden = document.getElementById("productos");
+const infoPost = [];
 //Bandera para el evento submit del formulario validado.
 let bandera = false;
 
@@ -54,31 +55,21 @@ orden.appendChild(total);
 inputOtroDomicilio.addEventListener("change",()=>{
     otroDomicilio.classList.toggle("d-none");
 });
-
+//Evento submit del formulario.
 formulario.addEventListener("submit", function (e){
     e.preventDefault();
     validarForm();
     if (bandera) {
-        Swal.fire({
-            title: '<strong>Orden enviada</strong>',
-            icon: 'success',
-            html:
-              `Seras redireccionado` ,
-            showCloseButton: true,
-            showCancelButton: false,
-            showConfirmButton: false,
-            focusConfirm: false,
-            timer: 2000
-          }).then(()=>{
-              location.replace("index.html");
-          })
+        pushDatos();
+        postOrden();
         finalizarOrden();
-    }
+    };
 });
-
+//Funcion de validacion del formulario
 function validarForm () {
+    //Almacenamos html colection de inputs con la clase "form-input".
     let inputs = document.getElementsByClassName("form-input");
-    //Revisamos la primera parte del formulario.
+    //Revisamos la primera parte del formulario (los 1ros 8 inputs).
     for (let input = 0; input < 8; input++){
         if (inputs[input].value == ""){
             bandera = false;
@@ -104,7 +95,7 @@ function validarForm () {
             }
         })
     }
-    //Si el checkbox de "enviar a domicilio distinto al de facturacion" esta activo, validamos la 2da parte tambien.
+    //Si el checkbox de "enviar a domicilio distinto al de facturacion" esta activo, validamos la 2da parte tambien (los otros 8 campos).
     if (inputOtroDomicilio.checked){
         for (let input = 8; input < 16; input++){
             if (inputs[input].value == ""){
@@ -133,4 +124,48 @@ function validarForm () {
         }
     }
     
+}
+//funcion para pushear los datos de la orden al array "infoPost" que luego sera enviado al servidor.
+function pushDatos(){
+    infoPost.push({
+        idOrden: ordenes[ordenes.length-1].idOrden,
+        productos: ordenes[ordenes.length-1].productosOrden,
+        fac_nombre: iNombre.value,
+        fac_apellido: iApellido.value,
+        fac_email: iEmail.value,
+        fac_tel: iTel.value,
+        fac_dni: iDni.value,
+        fac_domicilio: iDomicilio.value,
+        fac_ciudad: iCiudad.value,
+        fac_provincia: iProvincia.value,
+        envio_nombre: iNombreEnvio.value,
+        envio_apellido: iApellidoEnvio.value,
+        envio_email: iEmailEnvio.value,
+        envio_tel: iTelEnvio.value,
+        envio_dni: iDniEnvio.value,
+        envio_domicilio: iDomicilioEnvio.value,
+        envio_ciudad: iCiudadEnvio.value,
+        envio_provincia: iProvinciaEnvio.value
+    })
+}
+//Funcion de POST usando JQUERY.
+function postOrden () {
+    $.post("https://jsonplaceholder.typicode.com/posts", infoPost[0] , (response, state)=>{
+    if (state === "success"){
+        Swal.fire({
+            title: `<strong>Orden #${response.idOrden} enviada</strong>`,
+            icon: 'success',
+            html:
+              `Gracias ${response.fac_nombre} por su compra.
+              Será redireccionado al checkout de MERCADOPAGO` ,
+            showCloseButton: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+            focusConfirm: false,
+            timer: 2000
+          }).then(()=>{
+              //location.replace("index.html"); Mejor aqui poner funcion que haga post a la API de mercadopago usando fetch.
+          });
+    }
+})
 }
