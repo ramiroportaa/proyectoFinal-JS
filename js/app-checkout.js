@@ -23,7 +23,7 @@ const infoPost = [];
 //Bandera para el evento submit del formulario validado.
 let bandera = false;
 
-//RESUMEN DE ORDEN.
+//======= RESUMEN DE ORDEN ========
 //Agregamos al DOM cada producto en la orden.
 ordenes[ordenes.length-1].productosOrden.forEach(producto =>{
     let liProducto = document.createElement("li");
@@ -49,7 +49,7 @@ total.className = "d-flex align-items-center justify-content-between mt-2 p-2 bg
 total.innerHTML = `<strong class="text-uppercase small font-weight-bold">Total</strong><span>$${ordenes[ordenes.length-1].descuentoYtotal(porcentaje)[1]}</span>`;
 orden.appendChild(total);
 
-//FORMULARIO.
+//======= FORMULARIO ========
 //Mostramos la parte del formulario para envio a otro domicilio en caso de estar activado el checkbox.
 (inputOtroDomicilio.checked) ? otroDomicilio.classList.remove("d-none") : otroDomicilio.classList.add("d-none");
 inputOtroDomicilio.addEventListener("change",()=>{
@@ -164,8 +164,41 @@ function postOrden () {
             focusConfirm: false,
             timer: 2000
           }).then(()=>{
-              //location.replace("index.html"); Mejor aqui poner funcion que haga post a la API de mercadopago usando fetch.
+              mercadoPago()
           });
     }
 })
 }
+
+//====== API de MercadoPago =======
+//Creamos nuevo array con los productos de la orden pero con la estructura que pide la API de MercadoPago.
+const itemsToMP = ordenes[ordenes.length-1].productosOrden.map((prod)=>{
+    return {
+       title: prod.nombre,
+       description: "",
+       picture_url: "",
+       category_id: prod.grupo,
+       quantity: prod.cantidadCarrito,
+       currency_id: "ARS",
+       unit_price: prod.precio
+    }
+})
+//funcion de fetch (post) a MercadoPago.
+const mercadoPago = async () =>{
+    const BACK_URL = location.href.replace("checkout.html","index.html")
+    const response = await fetch("https://api.mercadopago.com/checkout/preferences", {
+        method: "POST",
+        headers: {
+            Authorization: "Bearer TEST-3644145109317975-102219-77b7021e8fcb20c51996fe477139bc44-208599844"
+        },
+        body: JSON.stringify({
+            items: itemsToMP,
+            back_urls: {
+                success: BACK_URL,
+                failure: BACK_URL
+            }
+        })
+    })
+    const data = await response.json() 
+    location.replace(data.init_point)  
+};
