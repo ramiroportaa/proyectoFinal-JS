@@ -2,7 +2,7 @@
 
 _Simulador de e-shop de indumentaria_
 
-_Nota → Cupón de 10% de descuento: "coderhouse"._
+Nota → Cupón de 10% de descuento: "coderhouse".
 
 ## Construido con 🛠️
 
