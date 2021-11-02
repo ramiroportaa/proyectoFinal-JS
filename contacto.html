@@ -62,68 +62,69 @@
         </nav>
     </header>
 
-    <main>
-      <!-- Sidebar del carrito -->
-      <div id="barraCarrito-container" class="row barraCarrito-container fixed-top">
-        <div id="barraCarrito" class="barraCarrito row">
-          <div class="barraCarrito-cerrar row justify-content-start">
-            <button id="barraCarrito-cerrar" class="col-4 btn-close p-4" type="button"></button>
-            <h4 class="col-8 mt-3">Carrito</h4>
-          </div>
-          <div id="barraCarrito-listaItems" class="row barraCarrito-listaItems">
-          </div>
-          <div class="row barraCarrito-botones">
-            <a href="carrito.html" class=" btn-dark text-uppercase mb-2 rounded p-2">
-              <span>Ver carrito</span>
-            </a>
-            <a href="checkout.html" class=" btn-dark text-uppercase mb-1 rounded p-2">
-              <span>Finalizar Compra</span>
-            </a>
-          </div>
+    <!-- Sidebar del carrito -->
+    <div id="barraCarrito-container" class="row barraCarrito-container fixed-top">
+      <div id="barraCarrito" class="barraCarrito row">
+        <div class="barraCarrito-cerrar row justify-content-start">
+          <button id="barraCarrito-cerrar" class="col-4 btn-close p-4" type="button"></button>
+          <h4 class="col-8 mt-3">Carrito</h4>
+        </div>
+        <div id="barraCarrito-listaItems" class="row barraCarrito-listaItems">
+        </div>
+        <div class="row barraCarrito-botones">
+          <a href="carrito.html" class=" btn-dark text-uppercase mb-2 rounded p-2">
+            <span>Ver carrito</span>
+          </a>
+          <a href="checkout.html" class=" btn-dark text-uppercase mb-1 rounded p-2">
+            <span>Finalizar Compra</span>
+          </a>
         </div>
       </div>
-      <!-- Alertas informativas -->
-      <div id="dialogoInfo" class="dialogoInfo text-uppercase justify-content-center">
-      </div>
+    </div>
+    <!-- Alertas informativas -->
+    <div id="dialogoInfo" class="dialogoInfo text-uppercase justify-content-center">
+    </div>
+
+    <main>
       <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="well well-sm form">
-                    <form class="" method="post">
+                    <form method="post">
                         <fieldset>
                             <legend class="text-center">Formulario de Contacto</legend>
     
                             <div class="form-group row mb-1">
                                 <span class="col-1 text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-11">
-                                    <input id="fname" name="name" type="text" placeholder="Nombre" class="form-control">
+                                    <input id="fname" name="name" type="text" placeholder="Nombre" class="form-control iContacto">
                                 </div>
                             </div>
                             <div class="form-group row mb-1">
                                 <span class="col-1  text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-11">
-                                    <input id="lname" name="name" type="text" placeholder="Apellido" class="form-control">
+                                    <input id="lname" name="name" type="text" placeholder="Apellido" class="form-control iContacto">
                                 </div>
                             </div>
     
                             <div class="form-group row mb-1">
                                 <span class="col-1  text-center"><i class="fa fa-envelope bigicon"></i></span>
                                 <div class="col-11">
-                                    <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+                                    <input id="email" name="email" type="email" placeholder="Email" class="form-control iContacto">
                                 </div>
                             </div>
     
                             <div class="form-group row mb-1">
                                 <span class="col-1  text-center"><i class="fab fa-whatsapp-square bigicon"></i></span>
                                 <div class="col-11">
-                                    <input id="phone" name="phone" type="text" placeholder="WhatsApp" class="form-control">
+                                    <input id="phone" name="phone" type="tel" placeholder="WhatsApp" class="form-control iContacto">
                                 </div>
                             </div>
     
                             <div class="form-group row mb-1">
                                 <span class="col-1  text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                                 <div class="col-11">
-                                    <textarea class="form-control" id="message" name="message" placeholder="Escribe tu mensaje para nosotros aqui. Te responderemos tan pronto como podamos." rows="7"></textarea>
+                                    <textarea class="form-control iContacto" id="message" name="message" placeholder="Escribe tu mensaje para nosotros aqui. Te responderemos tan pronto como podamos." rows="7"></textarea>
                                 </div>
                             </div>
     
@@ -285,6 +286,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JavaScrpit -->
     <script src="js/app.js"></script>
+    <script src="js/app-contacto.js"></script>
     <script src="js/app-sidebarCarrito.js"></script>
     <script src="js/app-newsletter.js"></script>
 </body>
