@@ -12,7 +12,6 @@ function escribirProductosHTML (arrayProductos, columnas=3) {
                             <div class="badge text-black badge-primary">${(producto.disponible()) ? "DISPONIBLE" : "AGOTADO"}</div><a id="detalle-${producto.idProducto}" class="d-block" href="detalle.html"><img class="img-fluid w-100" src="img/product-${producto.idProducto}.jpg" alt="${producto.nombre}"></a>
                             <div class="product-overlay">
                             <ul class="mb-0 list-inline">
-                                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-star"></i></a></li>
                                 <li class="list-inline-item m-0 p-0"><a id="agregarProducto-${producto.idProducto}" class="btn btn-sm btn-dark" href="#">Agregar al carrito</a></li>
                                 <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView-${producto.idProducto}" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                             </ul>
@@ -53,7 +52,11 @@ function escribirModalesHTML (arrayProductos){
                                     <div class="modal-content">
                                         <div class="modal-body p-0">
                                             <div class="row align-items-stretch">
-                                            <div class="col-lg-6 p-lg-0"><a class="product-view d-block h-100 bg-cover bg-center" style="background: url(img/product-${producto.idProducto}.jpg)" href="img/product-${producto.idProducto}.jpg" data-lightbox="productview-${producto.idProducto}" title="${producto.nombre}"></a><a class="d-none" href="img/product-${producto.idProducto}-alt-1.jpg" title="${producto.nombre}" data-lightbox="productview-${producto.idProducto}"></a><a class="d-none" href="img/product-${producto.idProducto}-alt-2.jpg" title="${producto.nombre}" data-lightbox="productview-${producto.idProducto}"></a></div>
+                                                <div class="col-lg-6 p-lg-0">
+                                                    <a class="product-view d-block h-100 bg-cover bg-center" style="background: url(img/product-${producto.idProducto}.jpg)" href="img/product-${producto.idProducto}.jpg" data-lightbox="productview-${producto.idProducto}" title="${producto.nombre}"></a>
+                                                    <a class="d-none" href="img/product-${producto.idProducto}-alt-1.jpg" title="${producto.nombre}" data-lightbox="productview-${producto.idProducto}"></a>
+                                                    <a class="d-none" href="img/product-${producto.idProducto}-alt-2.jpg" title="${producto.nombre}" data-lightbox="productview-${producto.idProducto}"></a>
+                                                </div>
                                                 <div class="col-lg-6">
                                                     <button class="btn-close p-4" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
                                                         <div class="p-5 my-md-4">
@@ -79,7 +82,6 @@ function escribirModalesHTML (arrayProductos){
                                                                     </div>
                                                                     <div class="col-sm-5 pl-sm-0"><a id="agregarProducto-${producto.idProducto}-modal" class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0">Agregar al carrito</a></div>
                                                                 </div>
-                                                                <a class="btn btn-link text-dark p-0" href="#"><i class="far fa-star me-2"></i>Añadir a favoritos</a>
                                                         </div>
                                                 </div>
                                             </div>

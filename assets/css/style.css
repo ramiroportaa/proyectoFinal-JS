@@ -351,6 +351,13 @@ h6 {
   outline: none;
 }
 
+.bg-cover {
+  background-size: cover !important;
+}
+.bg-center {
+  background-position: center center !important;
+}
+
 .dialogoInfo {
   display: flex;
   align-items: center;

@@ -196,6 +196,14 @@ h6 {
 		outline: none;
 	}
 }
+.bg{
+	&-cover{
+		background-size: cover !important;
+	}
+	&-center{
+		background-position: center center !important;
+	  }
+}
 //FIN MODAL Productos
 
 //DIALOGO INFORMATIVO
