@@ -1,7 +1,7 @@
 # proyectoFinal-JS
 
 _Simulador de e-shop de indumentaria_
-_Nota → Cupón de 10% de descuento: "coderhouse".
+_Nota → Cupón de 10% de descuento: "coderhouse"._
 
 ## Construido con 🛠️
 
